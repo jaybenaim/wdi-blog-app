@@ -1,0 +1,71 @@
+<!DOCTYPE HTML> 
+<head> 
+    <title>Blog</title> 
+    <link src='~/blog_app/public/css/main.css' type='text/css' rel="stylesheet" > 
+    <style> 
+        h1{ 
+            text-align: center; 
+            animation: 3s; 
+            animation-name: change_color; 
+        }
+        @keyframes change_color { 
+            10% { 
+                color: red; 
+            }
+            20% { 
+                color: green; 
+                font-size: 3em; 
+            }
+            40% { 
+                color: teal; 
+                font-size: -3em; 
+            }
+            80% { 
+                color: purple; 
+            }
+        }
+        p, h3, h2 { 
+            text-align: center; 
+        }
+        h3 { 
+            font-size: 22px; 
+            text-decoration: underline; 
+        }
+        p { 
+            padding: 20px; 
+            font-size: 18px;
+        }
+    </style> 
+</head> 
+
+<body> 
+
+    {% for article in articles%}
+        <h1>{{article}}</h1> 
+    {% endfor %}
+
+<!-- 
+<h1> Welcome To My Blog </h1> 
+
+<h2> The current date is {{date}} </h2> 
+
+<h3> What is a client? </h3> 
+    <p> A client is a computer hardware device or software that accesses a service made by a server. </p> 
+
+<h3> What is a server? </h3> 
+    <p> A server is a designated computer that waits from requests from a client and then provides responses accordingly.
+        The server provides a function or service to one or many clients, which initiates requests for such services. </p> 
+<h3> What is an HTTP request? </h3> 
+    <p> An HTTP request has three parts; the request line, the headers, and the body. 
+        The request line says what the client wants to do, what it wants to do it to, and the protocol its speaking.
+        When a client makes a request the server looks for the matching response and sends the file or whatever the client inquired about. 
+    </p> 
+<h3> What is an HTTP response? </h3> 
+    <p> An HTTP response is what the server sends to the client upon the clients request. It can be the resource that the client requested or an error. 
+    </p> 
+<h3> What is Django? </h3> 
+    <p> Django is an open-sourced,  high-level Python web framework that encourages rapid development, and clean pragmatic design . 
+        Django is fast, secure, and scalable. 
+    </p>  -->
+</body> 
+

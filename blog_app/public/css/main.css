@@ -1,0 +1,32 @@
+h1{ 
+    text-align: center; 
+    animation: 3s; 
+    animation-name: change_color; 
+}
+@keyframes change_color { 
+    10% { 
+        color: red; 
+    }
+    20% { 
+        color: green; 
+        font-size: 3em; 
+    }
+    40% { 
+        color: teal; 
+        font-size: -3em; 
+    }
+    80% { 
+        color: purple; 
+    }
+}
+p, h3, h2 { 
+    text-align: center; 
+}
+h3 { 
+    font-size: 22px; 
+    text-decoration: underline; 
+}
+p { 
+    padding: 20px; 
+    font-size: 18px;
+}
