@@ -3,10 +3,16 @@
     <title>Blog</title> 
     <link src='~/blog_app/public/css/main.css' type='text/css' rel="stylesheet" > 
     <style> 
+        body { 
+            background-image: url('https://i.imgur.com/j82xsEV.png');
+            color: white; 
+        }
         h1{ 
             text-align: center; 
             animation: 3s; 
             animation-name: change_color; 
+            margin-left: 20px; 
+            color: black; 
         }
         @keyframes change_color { 
             10% { 
@@ -34,8 +40,23 @@
         p { 
             padding: 0 20px; 
             font-size: 18px;
-            
+            /* background: rgba(255,255,255,0.4); 
+            border: 2px solid transparent; 
+            border-radius: 7px;  */
         }
+        ul { 
+            background: rgba(255,255,255,0.4); 
+            border: 2px solid transparent; 
+            border-radius: 7px; 
+            padding: 0 40px; 
+            
+
+        }
+        span { 
+            display: block; 
+            text-align: center; 
+        }
+
     </style> 
 </head> 
 
@@ -48,9 +69,12 @@
         {% for article in articles %}
 
             <h2>{{article.title}}</h2>
-            <p>{{article.body}}</p>
+            <p>{{article.body}}
+                <hr>
+                <span> By: {{article.author}}</span>
+            </p>
             <!-- <p>Draft: {{article.draft}}</p> -->
-            <p>By: {{article.author}}</p>
+            
         {% endfor %}
            </ul>
      
