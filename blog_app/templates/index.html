@@ -45,17 +45,24 @@
             border-radius: 7px;  */
         }
         ul { 
-            background: rgba(255,255,255,0.4); 
+            /* background: rgba(255,255,255,0.2);  */
             border: 2px solid transparent; 
             border-radius: 7px; 
             padding: 0 40px; 
-            
 
         }
         span { 
             display: block; 
             text-align: center; 
         }
+        .post { 
+            background: rgba(201, 201, 201, 0.589);  
+            border: 2px solid gray;
+            border-radius: 7px; 
+            margin-top: 5px; 
+            color: black;  
+        }
+       
 
     </style> 
 </head> 
@@ -65,41 +72,25 @@
 
         
         <h1>Welcome To My Blog! </h1>
+        
+        
         <ul> 
-        {% for article in articles %}
-
-            <h2>{{article.title}}</h2>
-            <p>{{article.body}}
-                <hr>
-                <span> By: {{article.author}}</span>
-            </p>
-            <!-- <p>Draft: {{article.draft}}</p> -->
+                <div class="post"> 
+                    {% for article in articles %}
+                    
+                    <h2>{{article.title}}</h2>
+                    <p>{{article.body}}
+                        <span> By: {{article.author}}</span>
+                        <hr >
+                    </p>
+                    <!-- <p>Draft: {{article.draft}}</p> -->
+                
+                    {% endfor %}
+                </div>
             
-        {% endfor %}
-           </ul>
+        </ul>
+        
+           
      
-<!-- 
-<h1> Welcome To My Blog </h1> 
-
-<h2> The current date is {{date}} </h2> 
-
-<h3> What is a client? </h3> 
-    <p> A client is a computer hardware device or software that accesses a service made by a server. </p> 
-
-<h3> What is a server? </h3> 
-    <p> A server is a designated computer that waits from requests from a client and then provides responses accordingly.
-        The server provides a function or service to one or many clients, which initiates requests for such services. </p> 
-<h3> What is an HTTP request? </h3> 
-    <p> An HTTP request has three parts; the request line, the headers, and the body. 
-        The request line says what the client wants to do, what it wants to do it to, and the protocol its speaking.
-        When a client makes a request the server looks for the matching response and sends the file or whatever the client inquired about. 
-    </p> 
-<h3> What is an HTTP response? </h3> 
-    <p> An HTTP response is what the server sends to the client upon the clients request. It can be the resource that the client requested or an error. 
-    </p> 
-<h3> What is Django? </h3> 
-    <p> Django is an open-sourced,  high-level Python web framework that encourages rapid development, and clean pragmatic design . 
-        Django is fast, secure, and scalable. 
-    </p>  -->
 </body> 
 
