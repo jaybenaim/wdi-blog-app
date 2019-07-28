@@ -5,18 +5,24 @@ from blog_app.models import Article
 
 def home(request): 
     date = datetime.now().date()
-    heading = Article.objects.get(pk=1).title
-    body = Article.objects.get(pk=1).body
-    
+    heading = Article.objects.order_by("published_date")[0].title
+    body = Article.objects.order_by("published_date")[0].body
+    draft = Article.objects.order_by("published_date")[0].draft
+    author = Article.objects.order_by("published_date")[0].author
     all_articles = Article.objects.all() 
     
+   
     context = {
         'date': date, 
     'heading': heading, 
     'articles': all_articles, 
-    'body': body
+    'body': body,
+    'draft': draft, 
+    'author': author, 
     } 
     response = render(request, 'index.html',  context)
     return HttpResponse(response) 
 
 
+def root(request): 
+    return HttpResponseRedirect('home')

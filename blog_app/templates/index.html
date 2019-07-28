@@ -32,8 +32,9 @@
             text-decoration: underline; 
         }
         p { 
-            padding: 20px; 
+            padding: 0 20px; 
             font-size: 18px;
+            
         }
     </style> 
 </head> 
@@ -41,11 +42,18 @@
 <body> 
 
 
-        <h2>{{date}}</h2>
-        <h2>{{heading.title}}</h2>
-        <p>{{body}}</p>
-  
+        
+        <h1>Welcome To My Blog! </h1>
+        <ul> 
+        {% for article in articles %}
 
+            <h2>{{article.title}}</h2>
+            <p>{{article.body}}</p>
+            <!-- <p>Draft: {{article.draft}}</p> -->
+            <p>By: {{article.author}}</p>
+        {% endfor %}
+           </ul>
+     
 <!-- 
 <h1> Welcome To My Blog </h1> 
 
