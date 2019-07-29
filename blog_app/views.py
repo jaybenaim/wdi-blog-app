@@ -14,12 +14,12 @@ def home(request):
    
     context = {
         'date': date, 
-    'heading': heading, 
-    'articles': all_articles, 
-    'body': body,
-    'draft': draft, 
-    'author': author,
-    'topics': Topic.objects.all()
+        'heading': heading, 
+        'articles': all_articles, 
+        'body': body,
+        'draft': draft, 
+        'author': author,
+        'topics': Topic.objects.all()
     } 
     response = render(request, 'index.html',  context)
     return HttpResponse(response) 
@@ -27,3 +27,5 @@ def home(request):
 
 def root(request): 
     return HttpResponseRedirect('home')
+
+
