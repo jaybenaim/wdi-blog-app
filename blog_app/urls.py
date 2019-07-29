@@ -21,5 +21,6 @@ urlpatterns = [
     path('', root), 
     path('admin/', admin.site.urls),
     path('home/', home),
-    
+    path('home/<int:id>', post_show, name='post_details'), 
+
 ]
