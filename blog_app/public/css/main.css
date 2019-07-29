@@ -1,7 +1,14 @@
+
+body { 
+    background-image: url('https://i.imgur.com/j82xsEV.png');
+    color: white; 
+}
 h1{ 
     text-align: center; 
     animation: 3s; 
     animation-name: change_color; 
+    margin-left: 20px; 
+    color: black; 
 }
 @keyframes change_color { 
     10% { 
@@ -27,6 +34,29 @@ h3 {
     text-decoration: underline; 
 }
 p { 
-    padding: 20px; 
+    padding: 0 20px; 
     font-size: 18px;
+    /* background: rgba(255,255,255,0.4); 
+    border: 2px solid transparent; 
+    border-radius: 7px;  */
 }
+ul { 
+    /* background: rgba(255,255,255,0.2);  */
+    border: 2px solid transparent; 
+    border-radius: 7px; 
+    padding: 0 40px; 
+
+}
+span { 
+    display: block; 
+    text-align: center; 
+}
+.post { 
+    background: rgba(201, 201, 201, 0.589);  
+    border: 2px solid gray;
+    border-radius: 7px; 
+    margin-top: 5px; 
+    color: black;  
+}
+
+

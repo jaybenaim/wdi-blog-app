@@ -1,11 +1,15 @@
 <!DOCTYPE HTML> 
 <head> 
     <title>Blog</title> 
-    <link src='~/blog_app/public/css/main.css' type='text/css' rel="stylesheet" > 
+    <link src='main.css' type='text/css' rel="stylesheet" > 
     <style> 
         body { 
-            background-image: url('https://i.imgur.com/j82xsEV.png');
+            background: linear-gradient(0deg, rgb(0, 171, 223), rgb(0, 110, 255), rgb(84, 161, 212)  ); 
+            /* background-image: url('https://i.imgur.com/j82xsEV.png'); */
             color: white; 
+            background-repeat: repeat; 
+            background-size: cover; 
+            
         }
         h1{ 
             text-align: center; 
@@ -13,6 +17,7 @@
             animation-name: change_color; 
             margin-left: 20px; 
             color: black; 
+            
         }
         @keyframes change_color { 
             10% { 
@@ -49,9 +54,10 @@
             border: 2px solid transparent; 
             border-radius: 7px; 
             padding: 0 40px; 
+            
 
         }
-        span { 
+        .author { 
             display: block; 
             text-align: center; 
         }
@@ -62,7 +68,18 @@
             margin-top: 5px; 
             color: black;  
         }
-       
+        .date { 
+            font-size: 14px; 
+            text-align: center; 
+            margin-top: -20px; 
+
+        }
+       h6 { 
+           margin-top: -20px; 
+           text-align: center; 
+           font-size: 16px; 
+           margin-bottom: 25px; 
+       }
 
     </style> 
 </head> 
@@ -75,19 +92,31 @@
         
         
         <ul> 
+            {% for article in articles %}
                 <div class="post"> 
-                    {% for article in articles %}
+                        
+                    
                     
                     <h2>{{article.title}}</h2>
-                    <p>{{article.body}}
-                        <span> By: {{article.author}}</span>
-                        <hr >
-                    </p>
-                    <!-- <p>Draft: {{article.draft}}</p> -->
-                
+                    {% for topic in topics %}
+                        {% if topic.id == article.id %}
+                        <h6>Topic: {{topic}}</h6>
+                        {% endif %}
                     {% endfor %}
+                    <h6 class="date" >{{article.published_date}}</h6>
+                    <p>{{article.body}}
+                        <span class='author'> By: {{article.author}}</span>
+                        <hr >
+
+                    </p>
+
+                    <!-- <p>Draft: {{article.draft}}</p> -->
+
+                
+                    
                 </div>
             
+            {% endfor %}
         </ul>
         
            
