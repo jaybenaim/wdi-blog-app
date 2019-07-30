@@ -1,46 +1,30 @@
 
 body { 
     background: linear-gradient(0deg, rgb(0, 171, 223), rgb(0, 110, 255), rgb(84, 161, 212)  ); 
-    /* background-image: url('https://i.imgur.com/j82xsEV.png'); */
     color: white; 
     background-repeat: repeat; 
     background-size: cover; 
     font-family: 'Oleo Script Swash Caps', cursive;
     letter-spacing: 0.5px;
-     
 }
 nav { 
    font-size: 2em; 
 }
 nav a { 
     text-decoration: none; 
-    margin-left: 20px; 
+    margin-left: 8px; 
+    position: fixed; 
 }
 h1 { 
     text-align: center; 
-    animation: 3s; 
+    animation: 5s; 
     animation-name: change_color; 
     margin-left: 20px; 
-    color: black; 
+    color: rgb(93, 248, 101);
     font-family: 'Euphoria Script', cursive;
     font-size: 4em; 
 }
-@keyframes change_color { 
-    10% { 
-        color: red; 
-    }
-    20% { 
-        color: green; 
-        font-size: 3em; 
-    }
-    40% { 
-        color: teal; 
-        font-size: -3em; 
-    }
-    80% { 
-        color: purple; 
-    }
-}
+
 p, h3, h2 { 
     text-align: center; 
 }
@@ -54,14 +38,10 @@ h3 {
 }
 p { 
     padding: 0 20px; 
-    
     font-size: 24px;
-    /* background: rgba(255,255,255,0.4); 
-    border: 2px solid transparent; 
-    border-radius: 7px;  */
+    font-family: Helvetica, sans-serif; 
 }
 ul { 
-    /* background: rgba(255,255,255,0.2);  */
     border: 2px solid transparent; 
     border-radius: 7px; 
     padding: 0 40px; 
@@ -74,13 +54,17 @@ ul {
     background: rgba(201, 201, 201, 0.589);  
     border: 2px solid gray;
     border-radius: 7px; 
-    margin-top: 5px; 
+    margin-top: 20px; 
     color: black;  
     margin-left: 40px; 
     margin-right: 40px; 
 }
 .post a { 
     text-decoration: none; 
+}
+.post-container { 
+    padding: 100px 0 100% 0;
+      
 }
 .date { 
     font-size: 14px; 
@@ -92,4 +76,20 @@ h6 {
    text-align: center; 
    font-size: 16px; 
    margin-bottom: 25px; 
+}
+@keyframes change_color { 
+    10% { 
+        color: rgb(253, 72, 72); 
+    }
+    20% { 
+        color: rgb(252, 237, 34); 
+        font-size: 3em; 
+    }
+    40% { 
+        color: rgb(93, 248, 101); 
+        font-size: -3em; 
+    }
+    80% { 
+        color: rgb(185, 81, 185); 
+    }
 }
