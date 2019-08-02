@@ -3,18 +3,20 @@ from django.forms import ModelForm
 
 
 class Topic(models.Model): 
-    name_of_topic = models.CharField(max_length=255, null=False)
+    name_of_topic = models.CharField(max_length=255, null=True)
+    article = models.ManyToManyField('Article', related_name="article_topics")
     
     def __str__(self): 
         return f'{self.name_of_topic}'
 
+ 
 class Article(models.Model): 
     title = models.CharField(max_length=255, null=False)
     body = models.TextField() 
     draft = models.BooleanField(default=True)
     published_date = models.DateTimeField(auto_now=True)
     author = models.CharField(max_length=255, null=False)
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    # topic = models.ForeignKey(Topic, on_delete=models.CASCADE, null=True)
 
     def __str__(self): 
         return f'{self.title}'
@@ -35,3 +37,12 @@ class CommentForm(ModelForm):
         model = Comment
         fields = ['name', 'message']
 
+class ArticleForm(ModelForm): 
+    class Meta: 
+        model = Article 
+        fields = ['title', 'body', 'draft', 'author']
+
+class TopicForm(ModelForm): 
+    class Meta: 
+        model = Topic 
+        fields = ['name_of_topic']

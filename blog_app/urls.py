@@ -23,5 +23,8 @@ urlpatterns = [
     path('home/', home),
     path('home/<int:id>', post_show, name='post_details'), 
     path('comments/new', create_comment, name='create_comment'),  
-    # path('comments/create', new), 
+    path('article/new', new_article, name='new_article'), 
+    path('article/create', create_article, name='create_article'),
+    # path('topic/new', new_topic, name='new_topic'),
+    # path('topic/create', create_topic, name='create_topic'),
 ]

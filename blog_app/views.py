@@ -6,7 +6,7 @@ from blog_app.models import *
 def home(request): 
     date = datetime.now().date()
     all_articles = Article.objects.order_by("-published_date") 
-   
+    
     context = {
         'date': date, 
         'articles': all_articles, 
@@ -23,10 +23,13 @@ def root(request):
 def post_show(request, id): 
     article = Article.objects.get(pk=id)
     form = CommentForm() 
+     
     context = { 
         'article': article, 
-        'comments': Comment.objects.all(),
-        'form': form
+        'comments': Comment.objects.filter(article_id=id),
+        'form': form, 
+        'topics': Topic.objects.all() 
+        
     } 
     return render(request, 'post.html', context) 
 
@@ -45,12 +48,42 @@ def create_comment(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
-# def new(request): 
-#     form = CommentForm() 
-#     context =  { 
-#         'form': form,
-#         'message': "Create a comment", 
-#         'action': '/comments/create' 
-#     }
+def new_article(request): 
+    form = ArticleForm() 
+    topic = TopicForm()
+    context =  { 
+        'form': form,
+        'message': "Create a comment", 
+        'action': 'article/create', 
+        'topic': topic 
+    }
 
-#     return render(request, 'form.html', context)
+    return render(request, 'new_article.html', context)
+
+def create_article(request): 
+    form = ArticleForm(request.POST) 
+    form.save() 
+    topic = TopicForm(request.POST) 
+    topic.save() 
+
+    return HttpResponseRedirect('/')
+
+# def new_topic(request):
+#     form = TopicForm() 
+    
+#     context = { 
+#         'topic_form': form 
+#     }
+#     return render(request, 'new_article', context)
+
+
+# def create_topic(request): 
+#     form = TopicForm(request.POST)
+#     article_id = request.POST["article"]
+#     article = Article.objects.get(pk=article_id)
+#     form.article = article
+#     form.save() 
+
+#     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
