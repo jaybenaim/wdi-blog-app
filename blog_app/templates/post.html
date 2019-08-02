@@ -13,8 +13,32 @@
             <hr >
         </p>
     </div>
+    <div class="comment-container"> 
+        <h2> Comments </h2> 
+        {% for comment in comments %}
+            <p class='comments' > Name: {{comment.name}} <span> Comment: {{comment.message}} </span> </p> 
+        {% endfor %}
+
+        <form action="{% url 'create_comment' %}" method="post"> 
+            <input type='hidden' name='article' value="{{ article.pk }}" > 
+                {% csrf_token %}
+                <div class='form-name' > 
+                    <label for='form-name' name='form-name' > Name: </label> 
+                        {{form.name}}
+                    <label for='form-message' name='form-message'  > Message: </label>
+                        {{form.message}}
+                    <input class="form-submit" type="submit" name="submit" value="submit" > 
+                </div> 
+            
+        </form> 
+
+    </div> 
 </div> 
 
 
 
 {% endblock %}
+
+
+
+

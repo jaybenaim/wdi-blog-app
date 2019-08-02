@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
     path('home/<int:id>', post_show, name='post_details'), 
-
+    path('comments/new', create_comment, name='create_comment'),  
+    # path('comments/create', new), 
 ]

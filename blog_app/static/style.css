@@ -63,8 +63,8 @@ ul {
     text-decoration: none; 
 }
 .post-container { 
-    padding: 100px 0 100% 0;
-      
+    padding: 100px 0; 
+    padding-bottom: 400px; 
 }
 .date { 
     font-size: 14px; 
@@ -77,6 +77,23 @@ h6 {
    font-size: 16px; 
    margin-bottom: 25px; 
 }
+.form-input { 
+    display: block; 
+    margin: 0 auto; 
+    text-align: center;  
+}
+.comment-container { 
+    background: rgba(201, 201, 201, 0.589);  
+    border: 2px solid gray;
+    border-radius: 7px; 
+    padding: 50px 0;  
+    margin: 80px 40px; 
+    color: black; 
+}
+.comments { 
+    font-size: 14px; 
+}
+
 @keyframes change_color { 
     10% { 
         color: rgb(253, 72, 72); 
