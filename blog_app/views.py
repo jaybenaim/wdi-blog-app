@@ -2,18 +2,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from datetime import datetime 
 from blog_app.models import * 
+from django import forms 
 
 def home(request): 
-    date = datetime.now().date()
-    all_articles = Article.objects.order_by("-published_date") 
+    all_articles = Article.objects.all() # .order_by("-published_date") 
     
-    context = {
-        'date': date, 
+    return render(request, 'index.html',  {
         'articles': all_articles, 
         'topics': Topic.objects.all(), 
-    } 
-    response = render(request, 'index.html',  context)
-    return HttpResponse(response) 
+    })
 
 
 def root(request): 
@@ -26,10 +23,9 @@ def post_show(request, id):
      
     context = { 
         'article': article, 
-        'comments': Comment.objects.filter(article_id=id),
+        'comments': Comment.objects.filter(article=article),
         'form': form, 
         'topics': Topic.objects.all() 
-        
     } 
     return render(request, 'post.html', context) 
 
@@ -45,7 +41,7 @@ def create_comment(request):
     comment.article = article
     comment.save() 
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponseRedirect('/')
 
 
 def new_article(request): 
@@ -55,35 +51,35 @@ def new_article(request):
         'form': form,
         'message': "Create a comment", 
         'action': 'article/create', 
-        'topic': topic 
+        'topic': topic, 
     }
 
     return render(request, 'new_article.html', context)
 
 def create_article(request): 
-    form = ArticleForm(request.POST) 
-    form.save() 
-    topic = TopicForm(request.POST) 
-    topic.save() 
-
-    return HttpResponseRedirect('/')
-
-# def new_topic(request):
-#     form = TopicForm() 
+    form = ArticleForm(request.POST)
+    topic = TopicForm(request.POST)
+    context = { 
+        'form': form,
+        'topic': topic
+    }
     
-#     context = { 
-#         'topic_form': form 
-#     }
-#     return render(request, 'new_article', context)
+    if form.is_valid(): 
+        form.save() 
+        topic = TopicForm(request.POST) 
+        topic.save() 
+    
+        return HttpResponseRedirect('/', context)
+    else: 
+        form = ArticleForm(request.POST)
+        topic = TopicForm(request.POST)
+    context = { 
+        'form': form,
+        'topic': topic
+    }
+    
+    return render(request, 'new_article.html', context) 
 
-
-# def create_topic(request): 
-#     form = TopicForm(request.POST)
-#     article_id = request.POST["article"]
-#     article = Article.objects.get(pk=article_id)
-#     form.article = article
-#     form.save() 
-
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    
 
 
