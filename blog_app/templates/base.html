@@ -1,5 +1,10 @@
-<html>
+{% load static %}
+<!DOCTYPE html> 
 <head> 
+    <title>{% block title %} {% endblock %}</title> 
+    <link href="https://fonts.googleapis.com/css?family=Euphoria+Script|Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" > 
 </head> 
 
 <body> 
