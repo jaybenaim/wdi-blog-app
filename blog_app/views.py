@@ -1,21 +1,40 @@
 from django.http import HttpResponse, HttpResponseRedirect 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime 
 from blog_app.models import * 
 from django import forms 
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth import login 
+from django.contrib.auth.forms import UserCreationForm 
 
+
+def root(request): 
+    return redirect('home/')
+    
 def home(request): 
     all_articles = Article.objects.all() # .order_by("-published_date") 
-    
     return render(request, 'index.html',  {
         'articles': all_articles, 
         'topics': Topic.objects.all(), 
     })
 
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('/')
 
-def root(request): 
-    return HttpResponseRedirect('home')
+def signup(request):
+    form = UserCreationForm() 
+    context =  {'form': form} 
+    return render(request, 'registration/signup.html', context)
 
+def signup_create(request): 
+    form = UserCreationForm(request.POST)
+    if form.is_valid(): 
+        new_user = form.save()
+        login(request, new_user)
+        return redirect('/')
+    else: 
+        return render(request, 'registration/signup.html', {'form': form})
 
 def post_show(request, id): 
     article = Article.objects.get(pk=id)
@@ -29,7 +48,7 @@ def post_show(request, id):
     } 
     return render(request, 'post.html', context) 
 
-
+@login_required 
 def create_comment(request): 
     params = request.POST 
     article_id = params["article"]
@@ -41,9 +60,9 @@ def create_comment(request):
     comment.article = article
     comment.save() 
 
-    return HttpResponseRedirect('/')
+    return redirect('/')
 
-
+@login_required 
 def new_article(request): 
     form = ArticleForm() 
     topic = TopicForm()
@@ -56,6 +75,7 @@ def new_article(request):
 
     return render(request, 'new_article.html', context)
 
+@login_required 
 def create_article(request): 
     form = ArticleForm(request.POST)
     topic = TopicForm(request.POST)

@@ -1,18 +1,15 @@
 from django.db import models 
 from django.forms import ModelForm 
-from django.core import  validators
+from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from datetime import date 
 from django import forms 
 
-
-
 def validate_body(value): 
     if len(value) < 2: 
         raise ValidationError(
             ('You need to enter a body.'), params={'value': value})
-
 
 class Topic(models.Model): 
     name_of_topic = models.CharField(max_length=255, null=True)

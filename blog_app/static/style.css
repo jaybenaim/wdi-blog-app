@@ -10,10 +10,17 @@ body {
 nav { 
    font-size: 2em; 
 }
-nav a { 
-    text-decoration: none; 
-    margin-left: 8px; 
-    position: fixed; 
+nav li { 
+    list-style: none; 
+    padding: 20px;
+    margin-left: -60px; 
+}
+nav li a { 
+    text-decoration: none;  
+    position: fixed;
+    display: block; 
+    width: 100%; 
+    text-align: center;  
 }
 h1 { 
     text-align: center; 

@@ -10,7 +10,17 @@
 <body> 
 <header> 
     <nav> 
-        <a href="/">Home</a> 
+        
+        <ul>
+            <li> <a class="home-button" href="/">Home</a> </li>
+            {% if request.user.is_authenticated %}
+                <li>Logged in as {{ request.user.username }}</li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+            {% else %}
+                <li><a href="{% url 'signup' %}">Sign up!</a></li>
+                <li><a href="{% url 'login' %}">Log in</a></li>
+            {% endif %}
+        </ul>
         
         {% block header %}
         {% endblock %}
