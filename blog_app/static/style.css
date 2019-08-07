@@ -1,6 +1,6 @@
 
 body { 
-    background: linear-gradient(0deg, rgb(0, 171, 223), rgb(0, 110, 255), rgb(84, 161, 212)  ); 
+    background: linear-gradient(0deg, rgb(0, 171, 223), rgb(0, 110, 255), rgb(84, 161, 212), rgb(0, 171, 223)); 
     color: white; 
     background-repeat: repeat; 
     background-size: cover; 
@@ -15,17 +15,43 @@ nav li {
     padding: 20px;
     margin-left: -60px; 
 }
-nav li a { 
-    text-decoration: none;  
-    position: fixed;
-    display: block; 
-    width: 100%; 
-    text-align: center;  
+nav a { 
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+}
+.login-name { 
+    margin-left: -100px;
+    font-size: .8em;  
+    float: right;
+}
+.signup-button { 
+    margin-top: -80px;
+    float: right; 
+    padding: 0;  
+}
+.login-button { 
+    margin-top: -80px; 
+    float: right;
+    padding: 0;  
+
+}
+.logout-button { 
+    margin-top: -10px; 
+    margin-left: -50px; 
+    font-size: 0.8em; 
+}
+.new-article-nav { 
+    margin-left: -80px; 
 }
 h1 { 
     text-align: center; 
     animation: 5s; 
     animation-name: change_color; 
+    margin-top: -180px; 
     margin-left: 20px; 
     color: rgb(93, 248, 101);
     font-family: 'Euphoria Script', cursive;
@@ -70,8 +96,19 @@ ul {
     text-decoration: none; 
 }
 .post-container { 
-    padding: 100px 0; 
+    margin-top: -40px; 
     padding-bottom: 400px; 
+}
+.edit-post-button { 
+    display: block; 
+    text-align: center; 
+    width: 100%;
+    font-size: 24px; 
+}
+.comment-form { 
+    display: block; 
+    text-align: center; 
+    width: 100%; 
 }
 .date { 
     font-size: 14px; 
@@ -100,7 +137,17 @@ h6 {
 .comments { 
     font-size: 14px; 
 }
-
+.edit-form-container { 
+    margin-top: 100px; 
+}
+/* .new-article-submit-button { 
+    display: block; 
+    width: 50%; 
+    text-align: center; 
+    font-size: 24px; 
+    margin-left: 100px; 
+   
+} */
 @keyframes change_color { 
     10% { 
         color: rgb(253, 72, 72); 

@@ -16,14 +16,21 @@
             <span class='author'> By: {{article.author}}</span>
             <hr >
         </p>
+    <div class='edit-post-button'> 
+        <a href="{% url 'edit_article' article.id %}">Edit Post</a> | 
+        <a class='delete-post-button' href="{% url 'delete_article' article.id %}">Delete Post</a> 
     </div>
     <div class="comment-container"> 
         <h2> Comments </h2> 
         {% for comment in comments %}
-            <p class='comments' > Name: {{comment.name}} <span> Comment: {{comment.message}} </span> </p> 
+            <p class='comments' >{{comment.name}}: {{comment.message}} </p> 
+            <div class='edit-post-button'> 
+                <a href="{% url 'edit_comment' comment.id %}">Edit Post</a> | 
+                <a class='delete-comment-button' href="{% url 'delete_comment' comment.id  %}">Delete Comment</a> 
+            </div>
         {% endfor %}
 
-        <form action="{% url 'create_comment' %}" method="post"> 
+        <form class='comment-form' action="{% url 'create_comment' %}" method="post"> 
             <input type='hidden' name='article' value="{{ article.pk }}" > 
                 {% csrf_token %}
                 <div class='form-name' > 
