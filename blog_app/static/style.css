@@ -140,14 +140,9 @@ h6 {
 .edit-form-container { 
     margin-top: 100px; 
 }
-/* .new-article-submit-button { 
-    display: block; 
-    width: 50%; 
-    text-align: center; 
-    font-size: 24px; 
-    margin-left: 100px; 
-   
-} */
+.new-article-submit-button { 
+    margin-top: 20px; 
+}
 @keyframes change_color { 
     10% { 
         color: rgb(253, 72, 72); 

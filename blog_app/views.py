@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 from django.urls import reverse 
 
 
+
 def root(request): 
     return redirect('home/')
     
